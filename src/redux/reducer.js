@@ -4,14 +4,12 @@ let dataState = {
 	userName: '',
 };
 
-const MainReducer = (state = dataState, action) => {
-	switch (action.type) {	
-        
+const MainReducer = (state:Object = dataState, action:Object) => {
+	switch (action.type) {
 		case USERNAME:
 			let userName = action.data;
 			dataState.userName = userName
-			return { ...dataState, userName: userName };		
-
+			return { ...dataState, userName: userName };
 		default:
 			return dataState;
 	}

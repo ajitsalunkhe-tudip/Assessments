@@ -1,0 +1,11 @@
+[ignore]
+.*/node_modules/react-native
+[include]
+
+[libs]
+./type-def-libs
+[lints]
+
+[options]
+types_first=false
+[strict]

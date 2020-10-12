@@ -1,8 +1,13 @@
 //@flow
 import { StyleSheet } from 'react-native';
+import Color from './../../constants/colors';
 
 export default StyleSheet.create({
   container:{
+    backgroundColor: Color.black,
+    flex: 1
+  },
+  viewContainer:{
     flex: 1,
     backgroundColor: 'black',
     flexDirection: 'column'
@@ -98,4 +103,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20, 
   },
+  saveButton: {
+		backgroundColor: Color.buttonBackgrond
+	},
 });

@@ -7,13 +7,20 @@
  */
 
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger';
 import rootReducer from './src/redux/reducer';
 import Route from './src/navigators';
-import 'react-native-gesture-handler';
 
-const store = createStore(rootReducer);
+const middlewares = [];
+
+// eslint-disable-next-line
+if (__DEV__) {
+	middlewares.push(applyMiddleware(logger));
+}
+
+const store = createStore(rootReducer, ...middlewares);
 
 const App = () => (
 	<Provider store={store}>

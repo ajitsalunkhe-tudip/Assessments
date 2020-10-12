@@ -1,5 +1,5 @@
 //@flow
-import React from 'react';
+import * as React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native'
 import style from './style';
 import { connect } from 'react-redux';

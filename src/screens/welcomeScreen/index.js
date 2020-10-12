@@ -5,6 +5,8 @@ import style from './style';
 import Images from '../../assets';
 import {saveUserName} from './../../redux/actions';
 import { connect } from 'react-redux';
+import Button from './../../components/button';
+import strings from './../../constants/strings';
 
 function WelcomeScreen (props) {
     const { userNameData } = props;
@@ -22,56 +24,58 @@ function WelcomeScreen (props) {
 
     const validateName = () => {
         if (!userName || userName == '') {
-          setUserNameError('Please Enter Name');
-          return false;
+            setUserNameError('Please Enter Name');
+            return false;
         } else {
             setUserNameError(undefined);
-          return true;
+            return true;
         }
     }
 
-
     return (
-        <>
-        <View style= {{backgroundColor:'black', flex: 1}}>
+        <View style= {style.container}>
             <ScrollView>    
-            <Text style={style.userNameheader}>
-               {userNameData == '' ? null : `Welcome ${userNameData}!`}
-            </Text> 
-            <View style = {style.container}>
-                <Image
-                    source={Images.logo} 
-                    style={style.image} >
-                </Image> 
-                <Text style={style.header}>Welcome!</Text> 
-                <View style={style.SectionStyle}>
-                    <Image source={Images.user} style={style.ImageStyle}/>
-                    <TextInput style = {{paddingLeft:10,fontWeight:'bold',color:'grey',fontSize:20}}
-                        placeholder = "Enter Name"
-                        placeholderTextColor='gray'
-                        textContentType='telephoneNumber'
-                        onChangeText={text => {
-                            setUserName(text)
-                            validateName()
-                        }}
-                        maxLength={15}
-                        value={userName}/>
-                </View>             
+                <Text style={style.userNameheader}>
+                    {userNameData == '' ? null : `Welcome ${userNameData}!`}
+                </Text> 
+                <View style = {style.viewContainer}>
+                    <Image
+                        source={Images.logo} 
+                        style={style.image} >
+                    </Image> 
+                    <Text style={style.header}>{strings.welcome.welcome}</Text> 
+                    <View style={style.SectionStyle}>
+                        <Image source={Images.user} style={style.ImageStyle}/>
+                        <TextInput style = {{paddingLeft:10,fontWeight:'bold',color:'grey',fontSize:20}}
+                            placeholder = "Enter Name"
+                            placeholderTextColor='gray'
+                            textContentType='telephoneNumber'
+                            onChangeText={text => {
+                                setUserName(text)
+                                validateName()
+                            }}
+                            maxLength={15}
+                            value={userName}/>
+                    </View>             
 
-                {userNameError && <Text style={style.errorText}>{userNameError}</Text>}
+                    {userNameError && <Text style={style.errorText}>{userNameError}</Text>}
 
                     <View> 
                         <TouchableOpacity
                             onPress = {() => { validate()}}>
                             <View style={[style.ButtonContainer, { backgroundColor: '#6eb1f7'}]}>
-                                <Text style={[style.buttonText, {color: '#fff'}]}>Save</Text> 
+                                <Text style={[style.buttonText, {color: '#fff'}]}>{strings.welcome.save}</Text> 
                             </View> 
                         </TouchableOpacity>
+                        {/* <Button
+                            containerStyle={style.saveButton}
+                            text={strings.welcome.save}
+                            onPress={validate()}
+                        /> */}
                     </View> 
                 </View>
             </ScrollView>
         </View>  
-        </>      
     )
  }
 
