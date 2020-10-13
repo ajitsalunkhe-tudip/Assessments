@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SwipeButton from 'rn-swipe-button';
 import Colors from './../../constants/colors';
 import strings from './../../constants/strings';
-import thumbIcon from '../../assets/diamond.png'
+import thumbIcon from '../../assets/diamond.png';
 
 function VariationScreen (props) {
     const { userNameData } = props;

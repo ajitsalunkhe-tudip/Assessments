@@ -9,7 +9,7 @@ import strings from './../../constants/strings';
 import Colors from './../../constants/colors';
 import {NativeModules} from 'react-native';
 
- const {EmulatorCheckModule} = NativeModules;
+const {EmulatorCheckModule} = NativeModules;
 
 const WelcomeScreen = (props) => {
     const { userNameData } = props;
