@@ -5,18 +5,22 @@ import style from './style';
 import Images from '../../assets';
 import {saveUserName} from './../../redux/actions';
 import { connect } from 'react-redux';
-import Button from './../../components/button';
 import strings from './../../constants/strings';
+import Colors from './../../constants/colors';
+import {NativeModules} from 'react-native';
 
-function WelcomeScreen (props) {
+ const {EmulatorCheckModule} = NativeModules;
+
+const WelcomeScreen = (props) => {
     const { userNameData } = props;
     const [userName, setUserName] = useState(undefined);
     const [userNameError, setUserNameError] = useState(undefined);
-   
+
     const validate = () => {
         const isNameValidated = validateName();
         const { saveUserName } = props;
         if (isNameValidated) {  
+            //_showToast();
             saveUserName(userName);
             props.navigation.navigate('Variation')
         }
@@ -24,12 +28,16 @@ function WelcomeScreen (props) {
 
     const validateName = () => {
         if (!userName || userName == '') {
-            setUserNameError('Please Enter Name');
+            setUserNameError(strings.welcome.validatename);
             return false;
         } else {
             setUserNameError(undefined);
             return true;
         }
+    }
+
+    const _showToast = () => {
+        EmulatorCheckModule.showToast(strings.nativeToast.showMessage);
     }
 
     return (
@@ -46,9 +54,10 @@ function WelcomeScreen (props) {
                     <Text style={style.header}>{strings.welcome.welcome}</Text> 
                     <View style={style.SectionStyle}>
                         <Image source={Images.user} style={style.ImageStyle}/>
-                        <TextInput style = {{paddingLeft:10,fontWeight:'bold',color:'grey',fontSize:20}}
-                            placeholder = "Enter Name"
-                            placeholderTextColor='gray'
+                        <TextInput style = {style.textInput}
+                            testID="input_name"
+                            placeholder = {strings.welcome.InputPlaceholder}
+                            placeholderTextColor={Colors.grey}
                             textContentType='telephoneNumber'
                             onChangeText={text => {
                                 setUserName(text)
@@ -62,16 +71,12 @@ function WelcomeScreen (props) {
 
                     <View> 
                         <TouchableOpacity
+                            testID="save"
                             onPress = {() => { validate()}}>
-                            <View style={[style.ButtonContainer, { backgroundColor: '#6eb1f7'}]}>
-                                <Text style={[style.buttonText, {color: '#fff'}]}>{strings.welcome.save}</Text> 
+                            <View style={[style.ButtonContainer, { backgroundColor: Colors.buttonBackgrond}]}>
+                                <Text style={[style.buttonText, {color: Colors.white}]}>{strings.welcome.save}</Text> 
                             </View> 
                         </TouchableOpacity>
-                        {/* <Button
-                            containerStyle={style.saveButton}
-                            text={strings.welcome.save}
-                            onPress={validate()}
-                        /> */}
                     </View> 
                 </View>
             </ScrollView>
@@ -87,7 +92,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        saveUserName: (userName) =>  saveUserName(dispatch, userName)
+        saveUserName: (userName) => saveUserName(dispatch, userName)
     }
 }
 

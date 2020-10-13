@@ -5,20 +5,15 @@
  * @format
  * @flow strict-local
  */
-
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import rootReducer from './src/redux/reducer';
 import Route from './src/navigators';
 
 const middlewares = [];
-
-// eslint-disable-next-line
-if (__DEV__) {
-	middlewares.push(applyMiddleware(logger));
-}
+middlewares.push(applyMiddleware(thunk));
 
 const store = createStore(rootReducer, ...middlewares);
 

@@ -7,5 +7,6 @@
 [lints]
 
 [options]
+module.name_mapper='^react-native$' -> '<PROJECT_ROOT>/src/react-native-dummy.js'
 types_first=false
 [strict]

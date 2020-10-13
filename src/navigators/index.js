@@ -6,7 +6,6 @@ import WelcomeScreen from './../screens/welcomeScreen';
 import VariationScreen from './../screens/variationScreen';
 import ThankyouScreen from '../screens/thankyouScreen';
 
-
 const Stack = createStackNavigator();
 
 function navigators() {

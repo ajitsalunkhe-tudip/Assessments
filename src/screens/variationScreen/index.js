@@ -4,7 +4,9 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import style from './style';
 import { connect } from 'react-redux';
 import SwipeButton from 'rn-swipe-button';
-import thumbIcon from '../../assets/diamond.png';//'../../assets/diamond.png';
+import Colors from './../../constants/colors';
+import strings from './../../constants/strings';
+import thumbIcon from '../../assets/diamond.png'
 
 function VariationScreen (props) {
     const { userNameData } = props;
@@ -23,22 +25,22 @@ function VariationScreen (props) {
     }
     
         return (
-            <View style={{backgroundColor:'black', flex:1}}>
+            <View style={{backgroundColor: Colors.black, flex:1}}>
             <Text style={style.userNameheader}>Welcome {userNameData}!</Text> 
                 <View style= {style.container}>
                     
-                    <Text style={style.header}>4 variations of a button</Text> 
+                    <Text style={style.header}>{strings.variation.textVariation}</Text> 
 
-                    {variationButton('#000', '#5982b0')}
-                    {variationButton('#34424b', '#5b82ab')}
-                    {variationButton('#6eb1f7', '#fff')}        
+                    {variationButton( Colors.black, Colors.variationBtnOne)}
+                    {variationButton( Colors.variationBtnbackgroundTwo, Colors.variationBtnTwo)}
+                    {variationButton( Colors.buttonBackgrond, Colors.white)}        
 
                     <SwipeButton
                         disabled={false}
                         swipeSuccessThreshold={80}
                         height={50}
                         width={325}
-                        title="Slide me to continue"
+                        title= {strings.variation.swipebuttonText}
                         titleColor='#5a8dc4'
                         titleFontSize={20}
                         titleStyles='bold'
@@ -47,12 +49,12 @@ function VariationScreen (props) {
                            props.navigation.navigate('ThankYou');
                         }}
                         shouldResetAfterSuccess={true}
-                        railFillBackgroundColor="#6eb1f7"
-                        railFillBorderColor="#2c313a"
-                        thumbIconBackgroundColor="#6eb1f7"
-                        thumbIconBorderColor="#6eb1f7"
-                        railBackgroundColor="#000"
-                        railBorderColor="#2c313a"
+                        railFillBackgroundColor={Colors.buttonBackgrond}
+                        railFillBorderColor={Colors.swipeBtnBorder}
+                        thumbIconBackgroundColor={Colors.buttonBackgrond}
+                        thumbIconBorderColor={Colors.buttonBackgrond}
+                        railBackgroundColor={Colors.black}
+                        railBorderColor={Colors.swipeBtnBorder}
                     />
 
                 </View>
