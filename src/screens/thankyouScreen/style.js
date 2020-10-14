@@ -1,18 +1,18 @@
 //@flow
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: 'black',
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
   },
-  header:{
-    textAlign:"center",
+  header: {
+    textAlign: 'center',
     color: '#8b931b',
-    fontSize: 25, 
-    fontWeight:'bold'
-  }
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
 });

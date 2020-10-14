@@ -20,8 +20,8 @@ public class EmulatorCheckModule extends ReactContextBaseJavaModule {
     //Custom function that we are going to export to JS
     @ReactMethod
     public void showEmulatorToast(String message) {
-        Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
-        isAndroidEmulator();
+        //Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        isAndroidEmulator(message);
     }
 
     private boolean isEmulator() {
@@ -43,20 +43,15 @@ public class EmulatorCheckModule extends ReactContextBaseJavaModule {
         || Build.PRODUCT.contains("simulator");
     }
 
-    public boolean isAndroidEmulator() {
+    public boolean isAndroidEmulator(String message) {
         String model = Build.MODEL;
         String product = Build.PRODUCT;
 
         boolean isEmulator = false;
         if (product != null) {
-            isEmulator = product.equals("sdk") 
-            || product.contains("_sdk") 
-            || product.contains("emulator")
-            || product.contains("sdk_");
+            isEmulator = product.equals("emulator");
+            Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show(); 
         }
-       // Log.d(TAG, "isEmulator=" + isEmulator);
-        //Toast.makeText(getReactApplicationContext(), isEmulator, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getReactApplicationContext(), ""+isEmulator, Toast.LENGTH_SHORT).show();
         return isEmulator;
     }
 }

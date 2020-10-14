@@ -5,9 +5,10 @@
  * @format
  * @flow strict-local
  */
+
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './src/redux/reducer';
 import Route from './src/navigators';
@@ -18,9 +19,9 @@ middlewares.push(applyMiddleware(thunk));
 const store = createStore(rootReducer, ...middlewares);
 
 const App = () => (
-	<Provider store={store}>
-		<Route />
-	 </Provider>
+  <Provider store={store}>
+    <Route />
+  </Provider>
 );
 
 export default App;

@@ -1,7 +1,7 @@
 //@flow
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from './../screens/welcomeScreen';
 import VariationScreen from './../screens/variationScreen';
 import ThankyouScreen from '../screens/thankyouScreen';

@@ -28,8 +28,6 @@ describe('AddUser component test', () => {
     fireEvent.changeText(getByTestId('input_name'), 'Test');
     fireEvent.press(getByTestId('save'));
 
-    // expect(getByTestId('input_name').props.navigation.navigate).toHaveBeenCalled();
-
     expect(props.navigation.navigate).toHaveBeenCalledWith('Variation');
   });
 });

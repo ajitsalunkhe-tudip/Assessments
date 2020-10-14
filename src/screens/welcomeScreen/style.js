@@ -1,45 +1,45 @@
 //@flow
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Color from './../../constants/colors';
 
 export default StyleSheet.create({
-  container:{
+  container: {
     backgroundColor: Color.black,
-    flex: 1
+    flex: 1,
   },
-  viewContainer:{
+  viewContainer: {
     flex: 1,
     backgroundColor: Color.black,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
-  userNameheader:{
+  userNameheader: {
     textAlign: 'right',
     color: '#8b931b',
-    fontSize: 20, 
+    fontSize: 20,
     fontWeight: 'bold',
-    padding: 20
+    padding: 20,
   },
-  header:{
-    textAlign: "center",
+  header: {
+    textAlign: 'center',
     color: Color.white,
-    fontSize: 25, 
+    fontSize: 25,
     marginBottom: 25,
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
-  image:{
+  image: {
     height: 125,
     width: 125,
     marginVertical: 90,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
-  textInputBorder:{
+  textInputBorder: {
     borderColor: Color.black,
     borderRadius: 25,
     borderWidth: 0.5,
-    height: 25
+    height: 25,
   },
   SectionStyle: {
-    flexDirection: 'row',    
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Color.white,
     borderWidth: 0.8,
@@ -48,7 +48,7 @@ export default StyleSheet.create({
     marginHorizontal: 30,
     borderRadius: 5,
     margin: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   ImageStyle: {
     padding: 10,
@@ -59,14 +59,14 @@ export default StyleSheet.create({
     resizeMode: 'stretch',
     alignItems: 'center',
   },
-  button:{
+  button: {
     textAlign: 'center',
     padding: 10,
     color: Color.white,
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 20,
   },
-  buttonStyle:{
+  buttonStyle: {
     borderColor: Color.black,
     height: 50,
     width: 150,
@@ -74,14 +74,14 @@ export default StyleSheet.create({
     borderWidth: 0.8,
     marginTop: 20,
     alignSelf: 'center',
-    backgroundColor: Color.grey
+    backgroundColor: Color.grey,
   },
   errorText: {
     color: 'red',
     marginBottom: 5,
     fontSize: 15,
     marginLeft: 35,
-    marginTop: -5
+    marginTop: -5,
   },
   ButtonContainer: {
     justifyContent: 'center',
@@ -96,18 +96,18 @@ export default StyleSheet.create({
     marginTop: 20,
     fontWeight: 'bold',
   },
-  buttonText:{
-    justifyContent: "center",
+  buttonText: {
+    justifyContent: 'center',
     textAlign: 'center',
     alignItems: 'center',
     color: 'yellow',
     alignSelf: 'center',
-    fontSize: 20, 
+    fontSize: 20,
   },
   textInput: {
     paddingLeft: 10,
     fontWeight: 'bold',
     color: Color.grey,
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });
