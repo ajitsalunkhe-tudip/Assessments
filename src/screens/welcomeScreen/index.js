@@ -1,33 +1,33 @@
 //@flow
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   ScrollView,
-  TouchableOpacity,
   Text,
-  TextInput,
   Image,
 } from 'react-native';
 import style from './style';
 import Images from '../../assets';
 import {saveUserName} from './../../redux/actions';
 import {connect} from 'react-redux';
-import strings from './../../constants/strings';
-import Colors from './../../constants/colors';
-import {NativeModules} from 'react-native';
+import strings from './../../util/strings';
+import Button from '../../components/Button';
+import CustomTextInput from '../../components/TextInput';
+import EmultorCheckModule from '../../util/emulator';
 
-const {EmulatorCheckModule} = NativeModules;
-
-const WelcomeScreen = (props) => {
+function WelcomeScreen(props){
   const {userNameData} = props;
   const [userName, setUserName] = useState(undefined);
   const [userNameError, setUserNameError] = useState(undefined);
+
+  useEffect(() => {
+    EmultorCheckModule.showEmulatorToast(strings.nativeToast.showMessage, EmultorCheckModule.SHORT);
+  });
 
   const validate = () => {
     const isNameValidated = validateName();
     const {saveUserName} = props;
     if (isNameValidated) {
-      _showToast();
       saveUserName(userName);
       props.navigation.navigate('Variation');
     }
@@ -36,15 +36,9 @@ const WelcomeScreen = (props) => {
   const validateName = () => {
     if (!userName) {
       setUserNameError(strings.welcome.validatename);
-      return false;
     } else {
       setUserNameError(undefined);
-      return true;
     }
-  };
-
-  const _showToast = () => {
-    EmulatorCheckModule.showEmulatorToast(strings.nativeToast.showMessage);
   };
 
   return (
@@ -56,41 +50,27 @@ const WelcomeScreen = (props) => {
         <View style={style.viewContainer}>
           <Image style={style.image} source={Images.logo}></Image>
           <Text style={style.header}>{strings.welcome.welcome}</Text>
-          <View style={style.SectionStyle}>
-            <Image source={Images.user} style={style.ImageStyle}></Image>
-            <TextInput
-              style={style.textInput}
-              testID="input_name"
-              placeholder={strings.welcome.InputPlaceholder}
-              placeholderTextColor={Colors.grey}
-              textContentType="telephoneNumber"
-              onChangeText={(text) => {
-                setUserName(text);
-                validateName();
-              }}
-              maxLength={15}
-              value={userName}></TextInput>
-          </View>
+          <CustomTextInput
+            placeholder={strings.welcome.InputPlaceholder}
+            image={Images.user}
+            containerStyle={style.textInput}
+            onChangeText={(text) => {
+              setUserName(text);
+              validateName();
+            }}
+            maxLength={15}
+            value={userName}
+          />
           {userNameError && (
             <Text style={style.errorText}>{userNameError}</Text>
           )}
-          <View>
-            <TouchableOpacity
-              testID="save"
-              onPress={() => {
-                validate();
-              }}>
-              <View
-                style={[
-                  style.ButtonContainer,
-                  {backgroundColor: Colors.buttonBackgrond},
-                ]}>
-                <Text style={[style.buttonText, {color: Colors.white}]}>
-                  {strings.welcome.save}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <Button
+            containerStyle={style.button}
+            text={strings.welcome.save}
+            onPress={() => {
+              validate();
+            }}
+          />
         </View>
       </ScrollView>
     </View>

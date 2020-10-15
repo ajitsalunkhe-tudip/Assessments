@@ -1,5 +1,6 @@
 //@flow
 import {StyleSheet} from 'react-native';
+import Colors from './../../util/colors';
 
 export default StyleSheet.create({
   container: {
@@ -78,5 +79,9 @@ export default StyleSheet.create({
   iconContainer: {
     flex: 0.15,
     backgroundColor: '#6eb1f7',
+  },
+  viewContainer: {
+    backgroundColor: Colors.black,
+    flex: 1
   },
 });

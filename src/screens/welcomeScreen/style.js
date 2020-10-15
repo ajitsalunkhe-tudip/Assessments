@@ -1,6 +1,6 @@
 //@flow
 import {StyleSheet} from 'react-native';
-import Color from './../../constants/colors';
+import Color from './../../util/colors';
 
 export default StyleSheet.create({
   container: {
@@ -59,23 +59,6 @@ export default StyleSheet.create({
     resizeMode: 'stretch',
     alignItems: 'center',
   },
-  button: {
-    textAlign: 'center',
-    padding: 10,
-    color: Color.white,
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  buttonStyle: {
-    borderColor: Color.black,
-    height: 50,
-    width: 150,
-    borderRadius: 5,
-    borderWidth: 0.8,
-    marginTop: 20,
-    alignSelf: 'center',
-    backgroundColor: Color.grey,
-  },
   errorText: {
     color: 'red',
     marginBottom: 5,
@@ -83,31 +66,15 @@ export default StyleSheet.create({
     marginLeft: 35,
     marginTop: -5,
   },
-  ButtonContainer: {
-    justifyContent: 'center',
-    alignSelf: 'center',
-    backgroundColor: Color.white,
-    borderWidth: 0.8,
-    borderColor: Color.black,
-    height: 50,
-    width: 350,
-    marginHorizontal: 30,
-    borderRadius: 5,
-    marginTop: 20,
-    fontWeight: 'bold',
-  },
-  buttonText: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    alignItems: 'center',
-    color: 'yellow',
-    alignSelf: 'center',
-    fontSize: 20,
-  },
   textInput: {
-    paddingLeft: 10,
-    fontWeight: 'bold',
-    color: Color.grey,
-    fontSize: 20,
+    // paddingLeft: 10,
+    // fontWeight: 'bold',
+    // color: Color.grey,
+    // fontSize: 20,
+    marginBottom: 16,
+		borderRadius: 5
   },
+  button: {
+    marginTop: 15,
+	},
 });

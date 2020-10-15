@@ -1,29 +1,30 @@
 //@flow
 import * as React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import style from './style';
 import {connect} from 'react-redux';
 import SwipeButton from 'rn-swipe-button';
-import Colors from './../../constants/colors';
-import strings from './../../constants/strings';
+import Colors from './../../util/colors';
+import strings from './../../util/strings';
 import thumbIcon from '../../assets/diamond.png';
+import Button from '../../components/Button';
 
 function VariationScreen(props) {
   const {userNameData} = props;
   const variationButton = (viewColor, textColor) => {
     return (
       <View>
-        <TouchableOpacity>
-          <View style={[style.ButtonStyle, {backgroundColor: viewColor}]}>
-            <Text style={[style.buttonText, {color: textColor}]}>Press me</Text>
-          </View>
-        </TouchableOpacity>
+        <Button
+          containerStyle={[style.ButtonStyle, {backgroundColor: viewColor}]}
+          style={[style.buttonText, {color: textColor}]}
+          text={strings.variation.pressMe}
+        />
       </View>
     );
   };
 
   return (
-    <View style={{backgroundColor: Colors.black, flex: 1}}>
+    <View style={style.viewContainer}>
       <Text style={style.userNameheader}>Welcome {userNameData}!</Text>
       <View style={style.container}>
         <Text style={style.header}>{strings.variation.textVariation}</Text>
@@ -41,7 +42,7 @@ function VariationScreen(props) {
           height={50}
           width={325}
           title={strings.variation.swipebuttonText}
-          titleColor="#5a8dc4"
+          titleColor={Colors.swipeTextTitile}
           titleFontSize={20}
           titleStyles="bold"
           thumbIconImageSource={thumbIcon}

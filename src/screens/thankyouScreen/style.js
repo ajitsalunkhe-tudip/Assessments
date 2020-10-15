@@ -1,5 +1,6 @@
 //@flow
 import {StyleSheet} from 'react-native';
+import Colors from './../../util/colors';
 
 export default StyleSheet.create({
   container: {
@@ -14,5 +15,9 @@ export default StyleSheet.create({
     color: '#8b931b',
     fontSize: 25,
     fontWeight: 'bold',
+  },
+  viewContainer: {
+    backgroundColor: Colors.black,
+    flex: 1
   },
 });

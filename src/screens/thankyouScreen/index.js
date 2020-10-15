@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 function ThankyouScreen(props) {
   return (
-    <View style={{backgroundColor: 'black', flex: 1}}>
+    <View style={style.viewContainer}>
       <View style={style.container}>
         <Text style={style.header}>Thank You {props.userNameData}!</Text>
       </View>
